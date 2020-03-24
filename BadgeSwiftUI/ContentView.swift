@@ -14,12 +14,21 @@ struct ContentView : View {
     
     var body: some View {
         VStack {
+            Text("Badge View").font(.largeTitle)
             Rectangle()
-                .fill(Color.blue)
+                .fill(Color.clear)
+                .border(Color.black)
                 .frame(width: 100, height: 100)
+            .overlay(
+                Image(systemName: "person")
+                .resizable()
+                    .foregroundColor(.gray)
+            )
                 .badge(num: badgeCount)
-            Stepper("Update", value: $badgeCount.animation())
+            Stepper("Update", value: $badgeCount.animation()).font(.headline)
+            Spacer()
         }
+        .padding()
         .badgeColor(Color.green)
     }
 }
